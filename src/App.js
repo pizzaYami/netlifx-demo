@@ -5,7 +5,7 @@ import Homepage from "./pages/Homepage/Homepage";
 import MoviePage from "./pages/Moives/MoviePage";
 import MovieDetailPage from "./pages/MovieDetail/MovieDetailPage";
 import NotFoundPage from "./pages/NotFoundPage/NotFoundPage";
-
+import "bootstrap/dist/css/bootstrap.min.css";
 // 홈페이지 /
 // 영화 전체버요주는 페이지 /movies
 // 영화 디테일 페이지 /movies/:id

@@ -9,7 +9,7 @@ import styled from "styled-components";
 
 function AppLayout() {
   return (
-    <div>
+    <ContainerS>
       <Navbar bg="black" data-bs-theme="dark" expand="lg">
         <Container fluid>
           <Navbar.Brand href="#">
@@ -38,12 +38,18 @@ function AppLayout() {
         </Container>
       </Navbar>
       <Outlet />
-    </div>
+    </ContainerS>
   );
 }
 
 export default AppLayout;
 
+const ContainerS = styled.div`
+  width: 100%;
+  height: 100vh;
+  background-color: black;
+  color: white;
+`;
 const LogoS = styled.img`
   width: 100%;
   height: 40px;

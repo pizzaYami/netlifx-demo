@@ -1,0 +1,26 @@
+.container {
+  text-align: center;
+  margin-top: 100px;
+}
+
+.title {
+  font-size: 48px;
+  color: #333;
+}
+
+.subtitle {
+  font-size: 24px;
+  color: #666;
+  margin: 20px 0;
+}
+
+.homeButton {
+  padding: 10px 20px;
+  font-size: 18px;
+  color: white;
+  background-color: #007bff;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  text-decoration: none;
+}

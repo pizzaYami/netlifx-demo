@@ -2,9 +2,6 @@ import React from "react";
 import PopularMovieSlilde from "./components/PopularMovieSlide/PopularMovieSlilde";
 import Banner from "./components/Banner/Banner";
 function Homepage() {
-  const API_KEY = process.env.REACT_APP_API_KEY;
-  console.log(API_KEY);
-
   return (
     <div>
       <Banner />

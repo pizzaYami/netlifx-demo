@@ -1,9 +1,8 @@
 import React from "react";
 import Alert from "react-bootstrap/Alert";
-import Carousel from "react-multi-carousel";
 import { useUpcomingMovies } from "../../../hooks/useUpcomingMovies";
 import { responsive } from "../../../constants/responsiveConstant";
-import MovieCard from "../components/MovieCard/MovieCard";
+import MovieSlider from "../../../common/MovieSlider/MovieSlider";
 
 function UpcomingMovieSlide() {
   const { data, isLoading, isError, error } = useUpcomingMovies();
@@ -17,18 +16,11 @@ function UpcomingMovieSlide() {
 
   return (
     <div>
-      <h3>Popular Movies</h3>
-      <Carousel
-        infinite={true}
-        centerMode={true}
-        itemClass="movie-slider p-10"
-        className="carousel-container"
+      <MovieSlider
+        title="Popular Movies"
+        movies={data.results}
         responsive={responsive}
-      >
-        {data.results.map((movie, index) => (
-          <MovieCard movie={movie} key={index} />
-        ))}
-      </Carousel>
+      />
     </div>
   );
 }

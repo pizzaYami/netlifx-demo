@@ -1,9 +1,8 @@
 import React from "react";
 import { useTopRatedMoviesQuery } from "../../../../hooks/useTopRatedMovies";
 import Alert from "react-bootstrap/Alert";
-import Carousel from "react-multi-carousel";
 import { responsive } from "../../../../constants/responsiveConstant";
-import MovieCard from "../MovieCard/MovieCard";
+import MovieSlider from "../../../../common/MovieSlider/MovieSlider";
 
 function TopRatedSlide() {
   const { data, isLoading, isError, error } = useTopRatedMoviesQuery();
@@ -17,18 +16,11 @@ function TopRatedSlide() {
 
   return (
     <div>
-      <h3>Top Rated Movies</h3>
-      <Carousel
-        infinite={true}
-        centerMode={true}
-        itemClass="movie-slider p-10"
-        className="carousel-container"
+      <MovieSlider
+        title="Top Rated Movies"
+        movies={data.results}
         responsive={responsive}
-      >
-        {data.results.map((movie, index) => (
-          <MovieCard movie={movie} key={index} />
-        ))}
-      </Carousel>
+      />
     </div>
   );
 }

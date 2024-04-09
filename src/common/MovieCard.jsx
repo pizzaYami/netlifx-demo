@@ -1,9 +1,10 @@
 import React from "react";
 import Badge from "react-bootstrap/Badge";
 import "./MovieCard.style.css";
-import { useGenreList } from "../../../../hooks/useGenreList";
-import starIcon from "../../../../assets/icon-star.svg";
-import humanIcon from "../../../../assets/icon-humans.svg";
+import { useGenreList } from "../hooks/useGenreList";
+import starIcon from "../assets/icon-star.svg";
+import humanIcon from "../assets/icon-humans.svg";
+
 function MovieCard({ movie }) {
   const { data } = useGenreList();
 

@@ -25,7 +25,9 @@ function MovieCard({ movie }) {
       <div className="overlay">
         <h1>{movie.title}</h1>
         {movie.genre_ids.map((id) => (
-          <Badge bg="danger">{getGenreNameById(id)}</Badge>
+          <Badge bg="danger" key={id}>
+            {getGenreNameById(id)}
+          </Badge>
         ))}
         <div className="cardDetail">
           <div>

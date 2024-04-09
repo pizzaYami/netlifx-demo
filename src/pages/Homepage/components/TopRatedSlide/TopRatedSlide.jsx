@@ -1,14 +1,12 @@
 import React from "react";
+import { useTopRatedMoviesQuery } from "../../../../hooks/useTopRatedMovies";
 import Alert from "react-bootstrap/Alert";
 import Carousel from "react-multi-carousel";
-import "react-multi-carousel/lib/styles.css";
-import { usePopularMoviesQuery } from "../../../../hooks/usePopularMovies";
-import MovieCard from "../MovieCard/MovieCard";
-import "./PopularMovieSlide.style.css";
 import { responsive } from "../../../../constants/responsiveConstant";
+import MovieCard from "../MovieCard/MovieCard";
 
-function PopularMovieSlilde() {
-  const { data, isLoading, isError, error } = usePopularMoviesQuery();
+function TopRatedSlide() {
+  const { data, isLoading, isError, error } = useTopRatedMoviesQuery();
 
   if (isLoading) {
     return <h1>Loading</h1>;
@@ -19,7 +17,7 @@ function PopularMovieSlilde() {
 
   return (
     <div>
-      <h3>Popular Movies</h3>
+      <h3>Top Rated Movies</h3>
       <Carousel
         infinite={true}
         centerMode={true}
@@ -35,4 +33,4 @@ function PopularMovieSlilde() {
   );
 }
 
-export default PopularMovieSlilde;
+export default TopRatedSlide;

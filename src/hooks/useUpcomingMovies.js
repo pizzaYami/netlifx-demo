@@ -5,7 +5,7 @@ const fetchUpcomingMovies = () => {
   return api.get("/movie/upcoming");
 };
 
-export const useUpcomingMovies = () => {
+export const useUpcomingMoviesQuery = () => {
   return useQuery({
     queryKey: ["movie-upcoming"],
     queryFn: fetchUpcomingMovies,

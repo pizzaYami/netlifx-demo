@@ -1,11 +1,11 @@
 import React from "react";
 import Alert from "react-bootstrap/Alert";
-import { useUpcomingMovies } from "../../../hooks/useUpcomingMovies";
+import { useUpcomingMoviesQuery } from "../../../hooks/useUpcomingMovies";
 import { responsive } from "../../../constants/responsiveConstant";
 import MovieSlider from "../../../common/MovieSlider/MovieSlider";
 
 function UpcomingMovieSlide() {
-  const { data, isLoading, isError, error } = useUpcomingMovies();
+  const { data, isLoading, isError, error } = useUpcomingMoviesQuery();
 
   if (isLoading) {
     return <h1>Loading</h1>;

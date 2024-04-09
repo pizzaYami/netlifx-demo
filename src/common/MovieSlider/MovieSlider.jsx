@@ -9,8 +9,9 @@ function MovieSlider({ title, movies, responsive }) {
     <div>
       <h3>{title}</h3>
       <Carousel
-        infinite={true}
-        centerMode={true}
+        infinite
+        centerMode
+        swipeable
         itemClass="movie-slider p-10"
         className="carousel-container"
         responsive={responsive}

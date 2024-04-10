@@ -20,7 +20,7 @@ import ReactPaginate from "react-paginate";
 
 function MoviePage() {
   const [query] = useSearchParams();
-  const [page, setPage] = useState(0);
+  const [page, setPage] = useState(1);
   const keyword = query.get("q");
   const { data, isLoading, isError, error } = useSearchMovieQuery({
     keyword,

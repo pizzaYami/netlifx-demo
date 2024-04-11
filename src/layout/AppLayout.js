@@ -4,7 +4,7 @@ import Form from "react-bootstrap/Form";
 import Nav from "react-bootstrap/Nav";
 import Navbar from "react-bootstrap/Navbar";
 import { Outlet, useNavigate } from "react-router-dom";
-import Logo from "../assets/logo-netflix.png";
+import Logo from "../assets/png/logo-netflix.png";
 import styled from "styled-components";
 import { useState } from "react";
 

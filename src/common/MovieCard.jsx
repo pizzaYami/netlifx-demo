@@ -4,9 +4,11 @@ import "./MovieCard.style.css";
 import { useGenreListQuery } from "../hooks/useGenreList";
 import starIcon from "../assets/icon-star.svg";
 import humanIcon from "../assets/icon-humans.svg";
+import { useNavigate } from "react-router-dom";
 
 function MovieCard({ movie }) {
   const { data } = useGenreListQuery();
+  const navigate = useNavigate();
 
   const getGenreNameById = (id) => {
     const genre = data?.genres.find((genre) => genre.id === id);
@@ -22,6 +24,7 @@ function MovieCard({ movie }) {
           ")",
       }}
       className="movie-card"
+      onClick={() => navigate(`/movies/${movie.id}`)}
     >
       <div className="overlay">
         <h1>{movie.title}</h1>

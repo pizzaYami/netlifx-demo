@@ -22,7 +22,7 @@ function AppLayout() {
     <ContainerS>
       <Navbar bg="black" data-bs-theme="dark" expand="lg">
         <Container fluid>
-          <Navbar.Brand href="#">
+          <Navbar.Brand href="/">
             <LogoS src={Logo} alt="netflix" />
           </Navbar.Brand>
           <Navbar.Toggle aria-controls="navbarScroll" />

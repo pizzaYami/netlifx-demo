@@ -1,7 +1,15 @@
-import React from "react";
+import React, { useState } from "react";
 import { useDetailMovieQuery } from "../../hooks/useDetailMovie";
 import { useParams } from "react-router-dom";
-import { Container, Row, Col, Alert, Badge } from "react-bootstrap";
+import {
+  Container,
+  Row,
+  Col,
+  Alert,
+  Badge,
+  Button,
+  Modal,
+} from "react-bootstrap";
 import "./MovieDetailPage.style.css";
 import starIcon from "../../assets/icon/icon-star.svg";
 import humanIcon from "../../assets/icon/icon-humans.svg";
@@ -9,13 +17,19 @@ import { useReviewMovie } from "../../hooks/useReviewMovie";
 import { useSimilarMovies } from "../../hooks/useSimilarMovies";
 import MovieSlider from "../../common/MovieSlider/MovieSlider";
 import { responsive } from "../../constants/responsiveConstant";
+import { useTrailerMovie } from "../../hooks/useTrailerMovie";
+import YouTube from "react-youtube";
 
 function MovieDetailPage() {
   const { id } = useParams();
+  const [show, setShow] = useState(false);
+  const handleClose = () => setShow(false);
+  const handleShow = () => setShow(true);
   const { data, isLoading, isError, error } = useDetailMovieQuery({ id });
   const { data: review } = useReviewMovie({ id });
   const { data: similarMovies } = useSimilarMovies({ id });
-  console.log(similarMovies);
+  const { data: trailer } = useTrailerMovie({ id });
+  console.log(trailer);
 
   if (isLoading) {
     return <h1>Loading...</h1>;
@@ -79,6 +93,16 @@ function MovieDetailPage() {
               {data?.runtime}분
             </div>
           </div>
+          <div className="d-grid gap-2">
+            <Button
+              variant="danger"
+              onClick={handleShow}
+              size="lg"
+              className="trailerBtn"
+            >
+              Trailer
+            </Button>
+          </div>
         </Col>
       </Row>
       <Row className="reviewWrap">
@@ -100,6 +124,10 @@ function MovieDetailPage() {
           responsive={responsive}
         />
       </Row>
+      <Row></Row>
+      <Modal show={show} onHide={handleClose}>
+        <YouTube videoId={trailer?.results[0].key} />
+      </Modal>
     </Container>
   );
 }

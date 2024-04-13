@@ -4,6 +4,7 @@ import { useSearchParams } from "react-router-dom";
 import MovieCard from "../../common/MovieCard";
 import { Container, Row, Col, Alert } from "react-bootstrap";
 import ReactPaginate from "react-paginate";
+import Sort from "./components/Sort/Sort";
 
 /**
  * 경로 2가지
@@ -21,11 +22,22 @@ import ReactPaginate from "react-paginate";
 function MoviePage() {
   const [query] = useSearchParams();
   const [page, setPage] = useState(1);
+  const [sort, setSort] = useState("popular");
+
   const keyword = query.get("q");
   const { data, isLoading, isError, error } = useSearchMovieQuery({
     keyword,
     page,
   });
+
+  const sortMovies = (movies) => {
+    if (sort === "popular") {
+      return movies?.results.sort((a, b) => b.popularity - a.popularity);
+    }
+    if (sort === "popular(DESC)") {
+      return movies?.results.sort((a, b) => a.popularity - b.popularity);
+    }
+  };
 
   if (isLoading) {
     return <h1>Loading...</h1>;
@@ -42,12 +54,12 @@ function MoviePage() {
     <Container>
       <Row>
         <Col lg={4} xs={12}>
-          필터
+          <Sort setSort={setSort} />
         </Col>
         <Col lg={8} xs={12}>
           <Row>
-            {data?.results.map((movie) => (
-              <Col key={movie} lg={4} xs={12}>
+            {sortMovies(data).map((movie) => (
+              <Col key={movie.id} lg={4} xs={12}>
                 <MovieCard movie={movie} />
               </Col>
             ))}

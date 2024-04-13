@@ -26,6 +26,11 @@
 .overlay:hover {
   opacity: 1;
 }
+.badges {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 3px;
+}
 
 .cardDetail {
   margin-top: 10px;

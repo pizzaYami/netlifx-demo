@@ -30,12 +30,14 @@ function MovieCard({ movie }) {
     >
       <div className="overlay">
         <h1>{movie?.title}</h1>
-        {movie.genre_ids &&
-          movie?.genre_ids.map((id) => (
-            <Badge bg="danger" key={id}>
-              {getGenreNameById(id)}
-            </Badge>
-          ))}
+        <div className="badges">
+          {movie.genre_ids &&
+            movie?.genre_ids.map((id) => (
+              <Badge bg="danger" key={id}>
+                {getGenreNameById(id)}
+              </Badge>
+            ))}
+        </div>
         <div className="cardDetail">
           <div>
             <img src={starIcon} alt="star" />

@@ -29,7 +29,6 @@ function MovieDetailPage() {
   const { data: review } = useReviewMovie({ id });
   const { data: similarMovies } = useSimilarMovies({ id });
   const { data: trailer } = useTrailerMovie({ id });
-  console.log(trailer);
 
   if (isLoading) {
     return <h1>Loading...</h1>;

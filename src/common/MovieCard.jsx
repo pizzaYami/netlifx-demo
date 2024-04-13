@@ -8,8 +8,9 @@ import humanIcon from "../assets/icon/icon-humans.svg";
 import { useNavigate } from "react-router-dom";
 
 function MovieCard({ movie }) {
-  const { data } = useGenreListQuery();
   const navigate = useNavigate();
+
+  const { data } = useGenreListQuery();
 
   const getGenreNameById = (id) => {
     const genre = data?.genres.find((genre) => genre.id === id);
@@ -21,29 +22,30 @@ function MovieCard({ movie }) {
       style={{
         backgroundImage:
           "url(" +
-          `https://www.themoviedb.org/t/p/w600_and_h900_bestv2${movie.poster_path}` +
+          `https://www.themoviedb.org/t/p/w600_and_h900_bestv2${movie?.poster_path}` +
           ")",
       }}
       className="movie-card"
-      onClick={() => navigate(`/movies/${movie.id}`)}
+      onClick={() => navigate(`/movies/${movie?.id}`)}
     >
       <div className="overlay">
-        <h1>{movie.title}</h1>
-        {movie.genre_ids.map((id) => (
-          <Badge bg="danger" key={id}>
-            {getGenreNameById(id)}
-          </Badge>
-        ))}
+        <h1>{movie?.title}</h1>
+        {movie.genre_ids &&
+          movie?.genre_ids.map((id) => (
+            <Badge bg="danger" key={id}>
+              {getGenreNameById(id)}
+            </Badge>
+          ))}
         <div className="cardDetail">
           <div>
             <img src={starIcon} alt="star" />
-            {movie.vote_average}
+            {movie?.vote_average}
           </div>
           <div>
             <img src={humanIcon} alt="human" />
-            {movie.popularity}
+            {movie?.popularity}
           </div>
-          <div>{movie.adult ? "over18" : "under18"}</div>
+          <div>{movie?.adult ? "over18" : "under18"}</div>
         </div>
       </div>
     </div>

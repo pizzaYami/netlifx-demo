@@ -6,12 +6,16 @@ import "./MovieDetailPage.style.css";
 import starIcon from "../../assets/icon/icon-star.svg";
 import humanIcon from "../../assets/icon/icon-humans.svg";
 import { useReviewMovie } from "../../hooks/useReviewMovie";
+import { useSimilarMovies } from "../../hooks/useSimilarMovies";
+import MovieSlider from "../../common/MovieSlider/MovieSlider";
+import { responsive } from "../../constants/responsiveConstant";
 
 function MovieDetailPage() {
   const { id } = useParams();
   const { data, isLoading, isError, error } = useDetailMovieQuery({ id });
   const { data: review } = useReviewMovie({ id });
-  console.log(review);
+  const { data: similarMovies } = useSimilarMovies({ id });
+  console.log(similarMovies);
 
   if (isLoading) {
     return <h1>Loading...</h1>;
@@ -77,8 +81,8 @@ function MovieDetailPage() {
           </div>
         </Col>
       </Row>
-      <Row>
-        <h2 className="reviewTitle">Reviews</h2>
+      <Row className="reviewWrap">
+        <h2>Reviews</h2>
         {review?.results.map((review) => {
           return (
             <div key={review.author} className="review">
@@ -88,6 +92,13 @@ function MovieDetailPage() {
             </div>
           );
         })}
+      </Row>
+      <Row>
+        <MovieSlider
+          title="Similar Movies"
+          movies={similarMovies?.results}
+          responsive={responsive}
+        />
       </Row>
     </Container>
   );

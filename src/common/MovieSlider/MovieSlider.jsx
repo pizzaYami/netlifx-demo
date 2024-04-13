@@ -8,18 +8,20 @@ function MovieSlider({ title, movies, responsive }) {
   return (
     <div>
       <h3>{title}</h3>
-      <Carousel
-        infinite
-        centerMode
-        swipeable
-        itemClass="movie-slider p-10"
-        className="carousel-container"
-        responsive={responsive}
-      >
-        {movies?.map((movie, index) => (
-          <MovieCard movie={movie} key={index} />
-        ))}
-      </Carousel>
+      {movies && (
+        <Carousel
+          infinite
+          centerMode
+          swipeable
+          itemClass="movie-slider p-10"
+          className="carousel-container"
+          responsive={responsive}
+        >
+          {movies?.map((movie, index) => (
+            <MovieCard movie={movie} key={index} />
+          ))}
+        </Carousel>
+      )}
     </div>
   );
 }
